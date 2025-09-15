@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { ReadiumView } from 'react-native-readium';
+import type { File } from 'react-native-readium';
+import type { Preferences } from 'react-native-readium';
 // Import your EPUB viewer here (e.g., react-native-epub-viewer)
-export default function EbookReader({ book }) {
+
+interface EbookReaderProps {
+  book: string;
+}
+
+export default function EbookReader({ book }: EbookReaderProps) {
   // Render EPUB from local file or remote URL
-  return (
-    // EPUB viewer component here
-    null
-  );
+  const MyComponent: React.FC = () => {
+    const [file] = useState<File>({
+      url: book,
+    });
+
+    return (
+      <ReadiumView
+        file={file} preferences={{}}      />
+    );
+  }
 }
