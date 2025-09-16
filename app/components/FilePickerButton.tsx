@@ -6,8 +6,8 @@ import { saveLocalBook } from '../services/fileSystem';
 export default function FilePickerButton() {
   const pickFile = async () => {
     const result = await DocumentPicker.getDocumentAsync({ type: 'application/epub+zip' });
-    if (result.type === 'success') {
-      await saveLocalBook(result.uri, result.name);
+    if (result.assets && result.assets[0] && !result.canceled) {
+      await saveLocalBook(result.assets[0].uri, result.assets[0].name);
       // Optionally trigger a refresh of the book list
     }
   };

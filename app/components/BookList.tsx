@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, TouchableOpacity, Text } from 'react-native';
-import { getLocalBooks, getRemoteBooks } from '../services/fileSystem';
+import { getLocalBooks } from '../services/fileSystem';
 import { fetchBooks } from '../services/api';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-export default function BookList({ navigation }) {
-  const [books, setBooks] = useState([]);
+
+type RootStackParamList = {
+  Reader: { book: any };
+};
+
+type BookListProps = {
+  navigation: NativeStackNavigationProp<RootStackParamList, 'Reader'>;
+};
+
+
+export default function BookList({ navigation } : BookListProps) {
+  const [books, setBooks] = useState<any[]>([]);
 
   useEffect(() => {
     const loadBooks = async () => {

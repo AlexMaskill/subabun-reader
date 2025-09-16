@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://your-api-url.com';
+const API_URL = '';
 
 export async function fetchBooks() {
   const res = await axios.get(`${API_URL}/books/`);
