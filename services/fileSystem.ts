@@ -1,8 +1,8 @@
-import * as FileSystem from 'expo-file-system';
+import {File, Directory, Paths } from 'expo-file-system';
 
 export async function saveLocalBook(uri: string, name: string) {
   // Copy EPUB to app storage
-  const dest = FileSystem.Directory.name + name;
+  const dest = Directory.name + name;
   //await new FileSystem.File().copy({ dest });
 }
 
@@ -22,11 +22,12 @@ export async function getRemoteBooks() {
 
 export async function getLocalBooks() {
   // List EPUBs in app storage
-  const files = await FileSystem.readDirectoryAsync(FileSystem.Directory.name || '');
-  return files.filter(f => f.endsWith('.epub')).map(f => ({
+  var Directory = Paths.document;
+  const files = Directory.list();
+  return files.filter(f =>  f.name.endsWith('.epub')).map(f => ({
     id: f,
     title: f,
-    uri: FileSystem.Directory + f,
+    uri: Directory.name + f,
     local: true,
   }));
 }
