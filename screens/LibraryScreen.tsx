@@ -6,7 +6,6 @@ import FilePickerButton from '../components/FilePickerButton';
 export default function LibraryScreen({ }: any) {
   return (
     <View style={{ flex: 1 }}>
-      <FilePickerButton />
       <BookList />
     </View>
   );
