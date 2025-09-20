@@ -1,8 +1,10 @@
+import { Book } from "@/utils/LibraryClasses";
+
 interface EbookReaderProps {
-  book: string;
+  book: Book;
 }
 
 interface AnkiExportButtonProps {
-  book: string;
+  book: Book;
 }
 export type { EbookReaderProps, AnkiExportButtonProps };

@@ -2,13 +2,17 @@ import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
+import ReaderScreen from '@/screens/ReaderScreen';
+import { Book } from '@/utils/LibraryClasses';
+import { useLibrary } from '@/context/LibraryContext';
 
 export default function TabTwoScreen() {
+  const { selectedBook } = useLibrary();
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/two.tsx" />
+      <ReaderScreen />
     </View>
   );
 }

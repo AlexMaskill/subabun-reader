@@ -3,12 +3,13 @@ import { FlatList, TouchableOpacity, Text } from 'react-native';
 import { getLocalBooks } from '../services/fileSystem';
 import { fetchBooks } from '../services/api';
 import FilePickerButton from './FilePickerButton';
-
+import {Book} from '../utils/LibraryClasses';
+import {useLibrary} from '../context/LibraryContext';
 
 type RootStackParamList = {
-  Reader: { book: any };
+  Reader: { book: Book };
 };
-const [books, setBooks] = useState<any[]>([]);
+const { books, setBooks } = useLibrary();
 const loadBooks = async () => {
       const local = await getLocalBooks();
       const remote = await fetchBooks();
@@ -32,7 +33,7 @@ export default function BookList() {
             // Handle book selection, e.g., navigate to Reader screen
             console.log('Selected book:', item);
           }}>
-            <Text>{item.title}</Text>
+            <Text>{item.title} - {item.author}</Text>
           </TouchableOpacity>
         )}
       />

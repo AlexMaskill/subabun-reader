@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'react-native';
 //import { exportToAnki } from '../utils/anki';
 
-export default function AnkiExportButton({ book }: { book: string }) {
+export default function AnkiExportButton({ }: any) {
   const handleExport = () => {
     // Gather selected words/sentences and export
     //exportToAnki(book);

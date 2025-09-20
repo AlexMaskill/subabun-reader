@@ -5,7 +5,7 @@ import { saveLocalBook } from '../services/fileSystem';
 
 export default function FilePickerButton({ onFilePicked }: { onFilePicked: (file: any) => void }) {
   const pickFile = async () => {
-    const result = await DocumentPicker.getDocumentAsync({ type: 'application/epub+zip' });
+    const result = await DocumentPicker.getDocumentAsync({ type: 'application/epub+zip', copyToCacheDirectory: true });
     if (result.assets && result.assets[0] && !result.canceled) {
       await saveLocalBook(result.assets[0].uri, result.assets[0].name);
       // Optionally trigger a refresh of the book list
