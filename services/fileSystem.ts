@@ -24,9 +24,12 @@ export async function getRemoteBooks() {
 
 export async function getLocalBooks() {
   // List EPUBs in app storage
-  var directory = new Directory(Paths.document);
+  const directory = new Directory(Paths.document);
+
   const files = await directory.list();
-  return files.filter(f =>  f.name.endsWith('.epub')).map(f => ({
+  return files
+  .filter(f =>  f.name.endsWith('.epub'))
+  .map(f => ({
     id: f,
     title: f,
     uri: directory.name + f,

@@ -5,7 +5,7 @@ import AnkiExportButton from '../components/AnkiExportButton';
 
 import type { RouteProp } from '@react-navigation/native';
 import { Book } from '@/utils/LibraryClasses';
-import {useLibrary} from '../context/LibraryContext';
+import {useLibrary} from '@/context/LibraryContext';
 
 type ReaderScreenRouteParams = {
   book: Book; // URL or local path to the EPUB file

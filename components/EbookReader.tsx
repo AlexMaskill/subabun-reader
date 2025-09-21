@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { ReadiumView } from 'react-native-readium';
 import type { File } from 'react-native-readium';
 import type { Preferences } from 'react-native-readium';
-import {useLibrary} from '../context/LibraryContext';
+import {useLibrary} from '@/context/LibraryContext';
 
-const { selectedBook } = useLibrary();
 
 export default function EbookReader() {
+    const { selectedBook } = useLibrary();
   // Render EPUB from local file or remote URL
     if(selectedBook === null) {
         return null;
