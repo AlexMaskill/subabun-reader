@@ -24,6 +24,7 @@ export async function getRemoteBooks() {
 
 export async function getLocalBooks() {
   // List EPUBs in app storage
+  console.log('Getting local books from', Paths.document);
   const directory = new Directory(Paths.document);
 
   const files = await directory.list();
